@@ -3,9 +3,9 @@ import java.util.Scanner;
 
 public class QuoteRunner{
 
-	private Scanner sc;
-	private QuoteList list;
-	private QuoteSaxParser parser;
+	private Scanner sc; //the scanner used to grab input
+	private QuoteList list; //the list to represent the quotes
+	private QuoteSaxParser parser; //the parser used to parse the quotes
 
 	public QuoteRunner() {
 		sc = new Scanner(System.in);
@@ -13,22 +13,16 @@ public class QuoteRunner{
 		list = parser.getQuoteList();
 	}
 
+	//main routine that handles logic flow
 	public void run() {
 
 		System.out.println("Welcome to quotes!");
-		int choice =0;
-		
-		while(choice != 3){
-			choice = 0;
-			while(choice != 1 && choice != 2 && choice != 3){
-				printMenu();
-				try{
-					choice = Integer.parseInt(sc.next());
-				} catch(Exception e) {
-					System.out.println("Invalid option. Valid options are \"1\" and \"2\". Try again.");
-				}
-			}
+		int choice = 0;
 
+		while(choice != 3){
+			choice = getChoice();
+
+			//if we're searching for a quote
 			if(choice == 1) {
 				int searchType = getSearchType();
 				System.out.print("Search for: ");
@@ -47,10 +41,11 @@ public class QuoteRunner{
 					System.out.println("\n" + q.getAuthor() + ": " + q.getQuoteText() + "\n");
 				}
 
-
+			//if we're getting a random quote
 			} else if(choice ==2){
 				Quote q = list.getRandomQuote();
 				System.out.println("\n" + q.getAuthor() + ": " + q.getQuoteText() + "\n");
+			//the choice must be 3 because of error handling, so exit.
 			} else {
 				System.out.println("Goodbye!");
 			}
@@ -59,7 +54,8 @@ public class QuoteRunner{
 
 
 	}
-
+	
+	//prints the main options menu
 	public void printMenu() {
 		System.out.println("What would you like to do?");
 		System.out.println("\n\t1: search for a quote.");
@@ -68,6 +64,22 @@ public class QuoteRunner{
 		System.out.print(">> ");
 	}
 
+	//grabs the choice for the main option menu
+	public int getChoice() {
+		int choice = 0;
+		while(choice != 1 && choice != 2 && choice != 3){
+			printMenu();
+			try{
+				choice = Integer.parseInt(sc.next());
+			} catch(Exception e) {
+				System.out.println("Invalid option. Valid options are \"1\" and \"2\". Try again.");
+			}
+		}
+		return choice;
+		
+	}
+
+	//grabs the desired search type
 	public int getSearchType() {
 		
 		int choice = 0;
