@@ -6,7 +6,9 @@ QuoteSaxParser.java -- Parses the XML file
 quotes.js -- JS used by the HTML created in quoteserve
 quotes.xml -- Data file, read by QuoteSaxParser
               Goes in (on home.cs.gmu.edu): /webapps/offutt/WEB-INF/data
-              Read from (https://cs.gmu.edu:8443/offutt/servlet/): /var/www/CS/webapps/offutt/WEB-INF/data/
+          	  Read from (https://cs.gmu.edu:8443/offutt/servlet/): /var/www/CS/webapps/offutt/WEB-INF/data/
+QuoteRunner.java -- Handles the logic for the command line interface.
+Driver.java -- runs the commandline interface.
 
 NOTE: SOMETIMES I CHANGE THE DEPLOYED VERSION OF quotes.xml,
       SO THIS VERSION IS OFTEN OUT OF DATE.
