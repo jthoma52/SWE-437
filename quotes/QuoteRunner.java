@@ -46,7 +46,8 @@ public class QuoteRunner{
 			} else if(choice ==2){
 				Quote q = list.getRandomQuote();
 				System.out.println("\n" + q.getAuthor() + ": " + q.getQuoteText() + "\n");
-			//the choice must be 3 because of error handling, so exit.
+			} else if(choice == 3) {
+				
 			} else {
 				//call QuoteList.writeNewQuotes();
 				System.out.println("Goodbye!");
@@ -63,7 +64,8 @@ public class QuoteRunner{
 		System.out.println("What would you like to do?");
 		System.out.println("\n\t1: search for a quote.");
 		System.out.println("\t2: get a random quote.");
-		System.out.println("\t3: exit.\n");
+		System.out.println("\t3: add a quote.");
+		System.out.println("\t4: exit.\n");
 		System.out.print(">> ");
 	}
 
@@ -105,4 +107,16 @@ public class QuoteRunner{
 
 	}
 	
+	public String validateForAdding() {
+		do {
+			System.out.println("working");
+		} while(false);
+
+		return null;
+
+
+
+	}
+
+
 }

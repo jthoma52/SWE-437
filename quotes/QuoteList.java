@@ -46,9 +46,19 @@ public class QuoteList
       return (Quote) quoteArray.get (i);
    }
 
-   //TODO
    public boolean addQuote(String author, String text) {
-		return false;
+		
+		if(!validateQuoteInput(author) || !validateQuoteInput(text)) {
+			return false;
+		}
+		quoteArray.add(new Quote(author, text));
+		return true;
+   }
+
+   public boolean validateQuoteInput(String s) {
+		return s.contains("<") || s.contains(">")
+			|| s.contains("quote-list") || s.contains("quote")
+			|| s.contains("author") || s.contains("quote-text");
    }
 
    //TODO
