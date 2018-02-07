@@ -49,6 +49,11 @@ public class QuoteRunner{
 			} else if(choice == 3) {
 				String author = getAuthor();
 				String quoteText = getQuoteText();
+				if(list.addQuote(author, quoteText)) {
+					System.out.println("Successfully added quote.");
+				} else {
+					System.out.println("Failed to add quote.");
+				}
 			} else {
 				//call QuoteList.writeNewQuotes();
 				System.out.println("Goodbye!");
