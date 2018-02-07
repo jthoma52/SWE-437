@@ -20,7 +20,7 @@ public class QuoteRunner{
 		System.out.println("Welcome to quotes!");
 		int choice = 0;
 
-		while(choice != 3){
+		while(choice != 4){
 			choice = getChoice();
 
 			//if we're searching for a quote
@@ -47,7 +47,7 @@ public class QuoteRunner{
 				Quote q = list.getRandomQuote();
 				System.out.println("\n" + q.getAuthor() + ": " + q.getQuoteText() + "\n");
 			} else if(choice == 3) {
-				
+				String author = getAuthor();	
 			} else {
 				//call QuoteList.writeNewQuotes();
 				System.out.println("Goodbye!");
@@ -72,7 +72,7 @@ public class QuoteRunner{
 	//grabs the choice for the main option menu
 	public int getChoice() {
 		int choice = 0;
-		while(choice != 1 && choice != 2 && choice != 3){
+		while(choice < 1 || choice > 4){
 			printMenu();
 			try{
 				choice = Integer.parseInt(sc.next());
@@ -107,12 +107,18 @@ public class QuoteRunner{
 
 	}
 	
-	public String validateForAdding() {
+	public String getAuthor() {
+		String input = null;
 		do {
-			System.out.println("working");
-		} while(false);
+			System.out.print("\n\tWhat is the name of the author?\n\t>> " );
+			input = sc.next();
+			if(list.validateQuoteInput(input)){
+				break;	
+			}
+		} while(true);
+		System.out.println();
+		return input;
 
-		return null;
 
 
 
