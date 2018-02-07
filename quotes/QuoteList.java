@@ -60,12 +60,6 @@ public class QuoteList
 			|| s.contains("quote-list") || s.contains("quote-text"));
    }
 
-   //TODO
-   public boolean writeNewQuotes(String filename) {
-		return false;
-		//Maybe change this to write a whole new quotes.xml file
-   }
-
    /**
     * Search the quotes in the list, based on searchString
     * @param searchString String input for search

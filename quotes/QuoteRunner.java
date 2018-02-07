@@ -55,7 +55,8 @@ public class QuoteRunner{
 					System.out.println("Failed to add quote.");
 				}
 			} else {
-				//call QuoteList.writeNewQuotes();
+				
+				QuoteWriter.write(FILE_NAME, list);
 				System.out.println("Goodbye!");
 
 			}
