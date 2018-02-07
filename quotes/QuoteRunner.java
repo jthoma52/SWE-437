@@ -6,10 +6,11 @@ public class QuoteRunner{
 	private Scanner sc; //the scanner used to grab input
 	private QuoteList list; //the list to represent the quotes
 	private QuoteSaxParser parser; //the parser used to parse the quotes
+	private final String FILE_NAME = "quotes/quotes.xml";
 
 	public QuoteRunner() {
 		sc = new Scanner(System.in);
-		parser = new QuoteSaxParser("quotes/quotes.xml");
+		parser = new QuoteSaxParser(FILE_NAME);
 		list = parser.getQuoteList();
 	}
 
@@ -47,7 +48,9 @@ public class QuoteRunner{
 				System.out.println("\n" + q.getAuthor() + ": " + q.getQuoteText() + "\n");
 			//the choice must be 3 because of error handling, so exit.
 			} else {
+				//call QuoteList.writeNewQuotes();
 				System.out.println("Goodbye!");
+
 			}
 
 		}
