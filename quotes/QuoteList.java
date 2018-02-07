@@ -57,8 +57,7 @@ public class QuoteList
 	// returns true if the quote is good.
    public boolean validateQuoteInput(String s) {
 		return !(s.contains("<") || s.contains(">")
-			|| s.contains("quote-list") || s.contains("quote")
-			|| s.contains("author") || s.contains("quote-text"));
+			|| s.contains("quote-list") || s.contains("quote-text"));
    }
 
    //TODO

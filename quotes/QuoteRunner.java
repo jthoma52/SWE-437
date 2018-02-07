@@ -27,7 +27,7 @@ public class QuoteRunner{
 			if(choice == 1) {
 				int searchType = getSearchType();
 				System.out.print("Search for: ");
-				String mySearch = sc.next();
+				String mySearch = sc.nextLine();
 				if(mySearch == null){
 					System.out.println("You can't search for nothing!!\n");
 					continue;
@@ -47,7 +47,8 @@ public class QuoteRunner{
 				Quote q = list.getRandomQuote();
 				System.out.println("\n" + q.getAuthor() + ": " + q.getQuoteText() + "\n");
 			} else if(choice == 3) {
-				String author = getAuthor();	
+				String author = getAuthor();
+				String quoteText = getQuoteText();
 			} else {
 				//call QuoteList.writeNewQuotes();
 				System.out.println("Goodbye!");
@@ -75,7 +76,7 @@ public class QuoteRunner{
 		while(choice < 1 || choice > 4){
 			printMenu();
 			try{
-				choice = Integer.parseInt(sc.next());
+				choice = Integer.parseInt(sc.nextLine());
 			} catch(Exception e) {
 				System.out.println("Invalid option. Valid options are \"1\" and \"2\". Try again.");
 			}
@@ -96,7 +97,7 @@ public class QuoteRunner{
 			System.out.println("\t3: Search by both.");
 			System.out.print("\n>> ");
 			try{
-				choice = Integer.parseInt(sc.next());
+				choice = Integer.parseInt(sc.nextLine());
 			} catch(Exception e) {
 				System.out.println("Invalid option. Valid options are 1-3.");
 			}
@@ -111,17 +112,29 @@ public class QuoteRunner{
 		String input = null;
 		do {
 			System.out.print("\n\tWhat is the name of the author?\n\t>> " );
-			input = sc.next();
+			input = sc.nextLine();
 			if(list.validateQuoteInput(input)){
 				break;	
 			}
+			System.out.println("\tInvalid entry! Try again.");
 		} while(true);
 		System.out.println();
 		return input;
 
-
-
-
+	}
+	
+	public String getQuoteText() {
+		String input = null;
+		do {
+			System.out.print("\n\tWhat is the quote?\n\t>> ");
+			input = sc.nextLine();
+			if(list.validateQuoteInput(input)) {
+				break;
+			}
+			System.out.println("\tInvalid entry! Try again.");
+		} while(true);
+		System.out.println();
+		return input;
 	}
 
 
