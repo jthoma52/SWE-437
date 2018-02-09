@@ -46,6 +46,8 @@ public class QuoteList
       return (Quote) quoteArray.get (i);
    }
 
+   //The checking is redundant here, because the validation takes place in getAuthor calls in
+   //QuoteRunner, but we do it to be safe.
    public boolean addQuote(String author, String text) {
 		
 		if(!validateQuoteInput(author) || !validateQuoteInput(text)) {
