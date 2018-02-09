@@ -7,8 +7,20 @@ import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
 
+/**
+	The purpose of this class (or really singular method) is to write an xml file
+	that follows the proper quotes schema. This class outputs a brand new file, and overwrites
+	any file that had the same name.
+**/
+
+
 public class QuoteWriter {
 
+
+	/**
+		Creates a new file called fileName and builds the proper xml.
+		Takes quotes through the list passed in and adds them all into the new file.
+	**/
 	public static boolean write(String fileName, QuoteList list) {
 		
 		try {
