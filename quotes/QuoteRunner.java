@@ -46,6 +46,8 @@ public class QuoteRunner{
 			} else if(choice ==2){
 				Quote q = list.getRandomQuote();
 				System.out.println("\n" + q.getAuthor() + ": " + q.getQuoteText() + "\n");
+			
+			//if we want to add a quote to our quotes "database"
 			} else if(choice == 3) {
 				String author = getAuthor();
 				String quoteText = getQuoteText();
@@ -54,8 +56,10 @@ public class QuoteRunner{
 				} else {
 					System.out.println("Failed to add quote.");
 				}
+			//if we want to exit
 			} else {
 				
+				//write the new quotes to file....
 				QuoteWriter.write(FILE_NAME, list);
 				System.out.println("Goodbye!");
 
@@ -114,6 +118,8 @@ public class QuoteRunner{
 
 	}
 	
+
+	//asks for the name ofthe author when a user wants to add a quote. Returns the input once valid.
 	public String getAuthor() {
 		String input = null;
 		do {
@@ -128,7 +134,8 @@ public class QuoteRunner{
 		return input;
 
 	}
-	
+
+	//asks for the quote when a user wants to add a quote. Returns the quote once valid.
 	public String getQuoteText() {
 		String input = null;
 		do {
