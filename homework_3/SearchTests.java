@@ -17,7 +17,7 @@ public class SearchTests{
 	@Before
 	public void init() {
 		parser = new QuoteSaxParser(FILE_NAME);
-		list = parser.getQuoteList();
+		list = parser.getQuoteList(); //get our list of quotes
 	}
 	
 	@Test
@@ -48,9 +48,11 @@ public class SearchTests{
 	@Test
 	public void testSearchByBoth() {
 
+		//first expectedd quote author and text pair
 		String expectedAuthor1 = "H. L. Mencken";
 		String expectedQuoteText1 = "For every problem there is one solution which is simple, neat, and wrong.";
 
+		//second expected quote autor and text pair
 		String expectedAuthor2 = "George Bernard Shaw";
 		String expectedQuoteText2 = "The only man who behaves sensibly is my tailor; he takes my measure anew every time he sees me, whilst all the rest go on with their old measurements, expecting them to fit me.";
 		
@@ -61,8 +63,13 @@ public class SearchTests{
 		assertEquals(expectedAuthor2, results.getQuote(1).getAuthor());
 		assertEquals(expectedQuoteText2, results.getQuote(1).getQuoteText());
 
+	}
 
-
+	@Test
+	public void testSearchInvalidMode() {
+		
+		QuoteList results = list.search("men", 4);
+		assertEquals(0, results.getSize());
 
 	}
 
