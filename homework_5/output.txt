@@ -1,0 +1,17 @@
+javac -cp .:hamcrest-core-1.3.jar:junit.jar *.java
+java -cp .:hamcrest-core-1.3.jar:junit.jar CalTests
+JUnit version 4.12
+.E....E.....
+Time: 0.004
+There were 2 failures:
+1) test10(CalTests)
+java.lang.AssertionError
+	at org.junit.Assert.fail(Assert.java:86)
+
+2) test4(CalTests)
+java.lang.AssertionError: expected:<2> but was:<-2>
+
+FAILURES!!!
+Tests run: 10,  Failures: 2
+
+(pushed output to text file and deleted full stack trace for easier visibility)
