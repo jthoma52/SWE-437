@@ -1,3 +1,4 @@
+import java.util.*;
 
 /**
  * Quote data object.
@@ -10,17 +11,24 @@ public class Quote
 {
    private String author;
    private String quoteText;
+   private List<String> keywords;
 
    // Default constructor does nothing
    public Quote ()
    {
    }
-
+	
+   public Quote(String author, String quoteText) {
+		this.author = author;
+		this.quoteText = quoteText;
+		keywords = new ArrayList<String>();
+   }
    // Constructor that assigns both strings
-   public Quote (String author, String quoteText)
+   public Quote (String author, String quoteText, List<String> keywords)
    {
       this.author = author;
       this.quoteText = quoteText;
+	  this.keywords = keywords;
    }
 
    // Getter and setter for author
@@ -42,6 +50,10 @@ public class Quote
    {
       this.quoteText = quoteText;
    }
+   public List<String> getKeywords() {
+		return keywords;
+   }
+
 
    @Override
    public String toString ()

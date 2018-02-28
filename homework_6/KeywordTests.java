@@ -12,7 +12,7 @@ public class KeywordTests {
 	@Test
 	public void testPresidentKeyword() {
 		Quote q = new Quote("Richard Nixon", "This is some quote that doesn't matter!", Arrays.asList("President"));
-		assertEquals(q.getKeywords().contains("President"));
+		assertTrue(q.getKeywords().contains("President"));
 	}
 
 
