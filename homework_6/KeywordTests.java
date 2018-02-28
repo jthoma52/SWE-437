@@ -10,8 +10,10 @@ public class KeywordTests {
 	}
 
 	@Test
-	public void firstCommit() {
-		assertTrue(true);
+	public void testPresidentKeyword() {
+		Quote q = new Quote("Richard Nixon", "This is some quote that doesn't matter!", Arrays.asList("President"));
+		assertEquals(q.getKeywords().contains("President"));
 	}
+
 
 }
