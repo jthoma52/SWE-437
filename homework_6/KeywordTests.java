@@ -86,7 +86,21 @@ public class KeywordTests {
 
 	}
 
+	@Test
+	public void testSearchByKeyword() {
+		
+		//write out two quotes to the file
+		QuoteList list = new QuoteList();
+		list.setQuote(new Quote("test1", "returned in search", Arrays.asList("one")));
+		list.setQuote(new Quote("test2", "returned in search", Arrays.asList("two")));
+		QuoteWriter.write("quotesTest.xml", list);
+		
+		//search by the letter o, make sure both were returned.
+		list = (new QuoteSaxParser("quotesTest.xml")).getQuoteList();
+		QuoteList results = list.search("o", 3);
+		assertEquals(2, results.getSize());
 
+	}
 	
 
 }
