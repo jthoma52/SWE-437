@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.*;
 
 public class QuoteRunner{
 
@@ -50,7 +51,7 @@ public class QuoteRunner{
 			} else if(choice == 3) {
 				String author = getAuthor();
 				String quoteText = getQuoteText();
-				if(list.addQuote(author, quoteText)) {
+				if(list.addQuote(author, quoteText, getKeywords())) {
 					System.out.println("Successfully added quote.");
 				} else {
 					System.out.println("Failed to add quote.");
@@ -103,15 +104,16 @@ public class QuoteRunner{
 			System.out.println("What type of search would you like to do?\n");
 			System.out.println("\t1: Search by author.");
 			System.out.println("\t2: Search by quote.");
-			System.out.println("\t3: Search by both.");
+			System.out.println("\t3: Search by both author and quote.");
+			System.out.println("\t4: Search by keyword.");
 			System.out.print("\n>> ");
 			try{
 				choice = Integer.parseInt(sc.nextLine());
 			} catch(Exception e) {
-				System.out.println("Invalid option. Valid options are 1-3.");
+				System.out.println("Invalid option. Valid options are 1-4.");
 			}
 			
-		} while(choice != 1 && choice !=2 && choice != 3);
+		} while(choice != 1 && choice !=2 && choice != 3 && choice != 4);
 		
 		return choice -1;
 
@@ -147,6 +149,26 @@ public class QuoteRunner{
 		} while(true);
 		System.out.println();
 		return input;
+	}
+	
+	//asks for the keywords of a quote when the user wants to add a keyword. Returns the list of kws.
+	public List<String> getKeywords() {
+		String input = null;
+		do {
+			System.out.print("\n\tWhat are the keywords? (if none, press enter)\n");
+			System.out.print("\tAdd up to 5. Seperate each by spaces.\n\t>> ");
+			input = sc.nextLine();
+			if(list.validateQuoteInput(input)){
+				break;
+			}
+			System.out.println("\tInvalid entry! Try again.");
+		}while(true);
+		System.out.println();
+		
+		if(input.length() == 0)
+			return new ArrayList<String>();
+
+		return Arrays.asList(input.split(" "));
 	}
 
 

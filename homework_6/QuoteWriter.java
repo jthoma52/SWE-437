@@ -35,6 +35,8 @@ public class QuoteWriter {
 				w.write("   <quote>\n");
 				w.write("      <quote-text>" + q.getQuoteText() + "</quote-text>\n");
 				w.write("      <author>" + q.getAuthor() + "</author>\n");
+				for(String keyword : q.getKeywords())
+					w.write("      <keyword>" + keyword + "</keyword>\n");
 				w.write("   </quote>\n");
 			}
 			w.write("</quote-list>\n");

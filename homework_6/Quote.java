@@ -16,6 +16,7 @@ public class Quote
    // Default constructor does nothing
    public Quote ()
    {
+   		keywords = new ArrayList<String>();
    }
 	
    public Quote(String author, String quoteText) {
@@ -28,7 +29,14 @@ public class Quote
    {
       this.author = author;
       this.quoteText = quoteText;
-	  this.keywords = keywords;
+	  if(keywords.size() > 5) {
+	  	this.keywords = new ArrayList<String>();
+	  	for(int i = 0; i <  5; i++) {
+			this.keywords.add(keywords.get(i)); //only add up to 5 keywords
+		}
+	  } else {
+	  	this.keywords = keywords;
+	  }
    }
 
    // Getter and setter for author
@@ -50,8 +58,14 @@ public class Quote
    {
       this.quoteText = quoteText;
    }
+
    public List<String> getKeywords() {
 		return keywords;
+   }
+
+   public void addKeyword(String keyword) {
+		if(keywords.size() < 5)
+			keywords.add(keyword);
    }
 
 

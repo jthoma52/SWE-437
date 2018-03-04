@@ -1,4 +1,4 @@
-
+import java.util.List;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -15,7 +15,7 @@ public class QuoteList
    /* package */ static final int SearchAuthorVal = 0;
    /* package */ static final int SearchTextVal   = 1;
    /* package */ static final int SearchBothVal   = 2;
-
+   /* package */ static final int SearchKeyword	  = 3;
    // For returning a random quote
    private Random randomGen;
    private final int seed = 19580427;
@@ -47,12 +47,12 @@ public class QuoteList
 
    //The checking is redundant here, because the validation takes place in getAuthor calls in
    //QuoteRunner, but we do it to be safe.
-   public boolean addQuote(String author, String text) {
+   public boolean addQuote(String author, String text, List<String> keywords) {
 		
 		if(!validateQuoteInput(author) || !validateQuoteInput(text)) {
 			return false;
 		}
-		quoteArray.add(new Quote(author, text));
+		quoteArray.add(new Quote(author, text, keywords));
 		return true;
    }
 	// returns true if the quote is good.
@@ -88,7 +88,14 @@ public class QuoteList
          {  // Found a matching author or quote, save it
             // System.out.println ("Matched Both ");
             returnQuote.setQuote (quote);
-         }
+         } else if(mode == SearchKeyword) {
+			for(String keyword : quote.getKeywords()) {
+				if(keyword.toLowerCase().indexOf(searchString.toLowerCase()) != -1) {
+					returnQuote.setQuote(quote);
+					break;
+				}
+			}
+		 }
       }
       return returnQuote;
    }

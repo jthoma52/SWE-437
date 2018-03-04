@@ -1,0 +1,28 @@
+
+Feature: As a user, I want to be able to add quotes with keywords and search for quotes by keywords.
+
+
+1. User story: As a developer, I want a keyword to be associated with a quote.
+	Test: testPresidentKeyword - Wrote a test to test if the word "President" is a keyword of a quote by richard nixon.
+	Refactor: Added a new constructor to Quote to include a list of keywords as an arg, added a getKeywords method. Test now passes.
+
+2. User story: As a developer, I want to make sure no quote can have more than 5 keywords.
+	Test: testNoMoreThanFiveKeywords - Wrote a test to make sure that only 5 keywords at most can be added
+	Refactor: Created TooManyKeywordsException class. 
+
+3. User story: As a developer, I want to change the schema of quote to contain the <keyword> tag
+	Test: testAddKeywordToSchema - Wrote a test that makes a single quote with keywords in it, writes it to a test xml, and checks to see if the file was written correctly.
+	Refactor: updated Quote with an addKeyword method. Updated SaxHandler to handle parsing the keyword field. Updated QuoteWriter to properly write out the keywords of a quote.
+
+4. User story: As a user, I want to add a quote with keywords in it.
+	Test: testAddQuoteWithKeyword --> insert two quotes into a file, write it, parse it, make sure the keywords got assigned.
+	Refactor: Added a keyword field to QuoteRunner when a user selects to add a quote.
+
+5. User story: As a user, I want to add a quote with or without keywords.
+	Test: testAddQuoteWithOrWithoutKeywords - add a quote with keywords, and one without. write to file, parse back in, make sure the keywords associated are correct.
+	Refactor: updated getKeywords() method in QuoteRunner to handle the user not inputting any keywords.
+
+6. User story: As a user, I want to be able to search for a quote by keyword.
+	Test: testSearchByKeyword: add two quotes with the same keyword, call the search method with keyword mode, make sure the correct quotes got returned.
+	Refactor:	updated getSearchType method in QuoteRunner to include the keyword search. Updated QuoteRunner search method to search by keyword.
+
