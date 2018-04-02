@@ -20,6 +20,7 @@ public class QuoteServerTests {
 		org.junit.runner.JUnitCore.main("QuoteServerTests");
 	}
 	
+	//Sets the HtmlUnit up properly
 	@Before
 	public void init() {
 		try{
@@ -34,6 +35,7 @@ public class QuoteServerTests {
 		}
 	}
 
+	//Test getting a random quote
 	@Test
 	public void getRandomQuote() {
 		try{
@@ -51,24 +53,28 @@ public class QuoteServerTests {
 
 	}
 
+	//Test search by quote with undercase string
 	@Test
 	public void testQuoteUndercase() {
-		String output = query("quote", "I know that you believe you understand what you think");
+		String output = query("quote", "i know that you believe you understand what you think");
 		assertTrue(output.contains("Richard Nixon"));
 	}
 
+	//Test search by quote with uppercase string
 	@Test
 	public void testQuoteUppercase() {
 		String output = query("quote", "I KNOW THAT YOU BELIEVE YOU UNDERSTAND WHAT YOU THINK");
 		assertTrue(output.contains("Richard Nixon"));
 	}
 
+	//Test search by author with undercase string
 	@Test
 	public void testAuthorUndercase() {
 		String output = query("author", "richard nixon");
-		assertTrue(output.contains("I know that you believe you understand what you think I said"));
+		assertTrue(output.contains("i know that you believe you understand what you think i said"));
 	}
 
+	//Test search by both with undercase string
 	@Test
 	public void testBothUndercase() {
 		String output = query("both", "help");
@@ -76,6 +82,7 @@ public class QuoteServerTests {
 		assertTrue(output.contains("but it is so honest that god can't help but smile on it."));
 	}
 	
+	//Test search by quote with an empty string
 	@Test
 	public void testQuoteEmptyString() {
 		String output = query("both", "");
@@ -83,6 +90,7 @@ public class QuoteServerTests {
 		assertTrue(true);
 	}
 
+	//Test search by quote with string.length() > 100. This fails when it should pass!
 	@Test
 	public void testQuoteLargeString() {
 		
@@ -93,6 +101,7 @@ public class QuoteServerTests {
 	}
 
 
+	//Helper method that clicks the search button and sets the search type. Returns the text result
 	public String query(String stype, String sstring) {
 		try{
 			searchType = form.getInputByValue(stype);
