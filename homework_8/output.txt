@@ -1,0 +1,18 @@
+javac -cp hamcrest-core-1.3.jar:junit.jar:htmlunit-2.30/lib/*:. QuoteServerTests.java
+java -cp hamcrest-core-1.3.jar:junit.jar:htmlunit-2.30/lib/*:. QuoteServerTests
+JUnit version 4.12
+.......E
+Time: 2.232
+There was 1 failure:
+1) testQuoteLargeString(QuoteServerTests)
+java.lang.AssertionError
+	at org.junit.Assert.fail(Assert.java:86)
+	at org.junit.Assert.assertTrue(Assert.java:41)
+	at org.junit.Assert.assertTrue(Assert.java:52)
+	at QuoteServerTests.testQuoteLargeString(QuoteServerTests.java:92)
+	.....deleted rest of stack trace for readability......
+
+FAILURES!!!
+Tests run: 7,  Failures: 1
+
+Makefile:2: recipe for target 'all' failed
